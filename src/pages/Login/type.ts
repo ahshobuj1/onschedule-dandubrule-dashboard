@@ -13,7 +13,8 @@ export const loginFormSchema = z.object({
 
   terms: z
     .boolean()
-    .refine((val) => val === true, 'You must accept the terms and conditions'),
+    .refine((val) => val === true, 'You must accept the terms and conditions')
+    .optional(),
 });
 
 export type LoginFormData = z.infer<typeof loginFormSchema>;

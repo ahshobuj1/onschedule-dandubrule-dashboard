@@ -21,41 +21,37 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
-import {useMemo} from 'react';
-import {useNavigate} from 'react-router';
-// import {useLogoutMutation, useProfileQuery} from '@/features/auth/authApi';
-// import type {TUser} from '@/pages/Users/type';
+// import {useMemo} from 'react';
+import {toast} from 'sonner';
+import {useAppDispatch} from '@/hooks/hooks';
+import {logout} from '@/features/auth/authSlice';
+import {useSelector} from 'react-redux';
+import {type RootState} from '@/app/store';
 
 export function NavUser() {
   const {isMobile} = useSidebar();
-  const navigate = useNavigate();
-  // const {data: profile, isFetching} = useProfileQuery(undefined, {
-  //   refetchOnMountOrArgChange: true,
-  // });
-  // const [logout, {isLoading: isLoggingOut}] = useLogoutMutation();
-
-  // const [setAvatarError] = useState(false);
+  const {user} = useSelector((state: RootState) => state.auth);
+  const dispatch = useAppDispatch();
 
   // Dummy user for display only
-  const user = useMemo(
-    () => ({
-      id: 'dummy-1',
-      displayName: 'John Doe',
-      email: 'john.doe@example.com',
-      avatarUrl: '', // empty to fallback to default image
-    }),
-    []
-  );
+  // const dummyUser = useMemo(
+  //   () => ({
+  //     id: 'dummy-1',
+  //     displayName: 'John Doe',
+  //     email: 'john.doe@example.com',
+  //     avatarUrl: '', // empty to fallback to default image
+  //   }),
+  //   []
+  // );
 
   const handleLogout = () => {
-    console.log('Dummy logout clicked');
-    navigate('/login');
+    try {
+      dispatch(logout());
 
-    // try {
-    //   await logout().unwrap();
-    // } catch (error) {
-    //   console.error('Logout failed:', error);
-    // }
+      toast.success('Logout successful...!');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
 
   // if (isFetching && !user) {
@@ -95,29 +91,31 @@ export function NavUser() {
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
               aria-label="User menu">
               <Avatar className="h-8 w-8 rounded-lg grayscale">
-                {/* {!avatarError && user.avatarUrl ? (
+                {/* {!avatarError && user?.avatarUrl ? (
                   <AvatarImage
                     src={defaultUserImage}
-                    // src={user.avatarUrl}
-                    alt={user.displayName}
+                    // src={user?.avatarUrl}
+                    alt={user?.displayName}
                     onError={() => setAvatarError(true)}
                   />
                 ) : (
                   <AvatarFallback className="rounded-lg">
-                    {user.displayName?.[0]?.toUpperCase() || 'U'}
+                    {user?.displayName?.[0]?.toUpperCase() || 'U'}
                   </AvatarFallback>
                 )} */}
                 <AvatarImage
-                  src={user.avatarUrl || defaultUserImage}
-                  alt={user.displayName}
+                  src={user?.avatarUrl || defaultUserImage}
+                  alt={user?.displayName}
                   // onError={() => setAvatarError(true)}
                 />
               </Avatar>
 
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.displayName}</span>
+                <span className="truncate font-medium">
+                  {user?.displayName}
+                </span>
                 <span className="text-muted-foreground truncate text-xs">
-                  {user.email}
+                  {user?.email}
                 </span>
               </div>
               <IconDotsVertical
@@ -136,19 +134,19 @@ export function NavUser() {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage
-                    src={user.avatarUrl || defaultUserImage}
-                    alt={user.displayName}
+                    src={user?.avatarUrl || defaultUserImage}
+                    alt={user?.displayName}
                   />
                   <AvatarFallback className="rounded-lg">
-                    {user.displayName?.[0]?.toUpperCase() || 'U'}
+                    {user?.displayName?.[0]?.toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">
-                    {user.displayName}
+                    {user?.displayName}
                   </span>
                   <span className="text-muted-foreground truncate text-xs">
-                    {user.email}
+                    {user?.email}
                   </span>
                 </div>
               </div>

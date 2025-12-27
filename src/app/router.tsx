@@ -14,6 +14,7 @@ import Clients from '@/pages/Clients/Clients';
 import Epmloyees from '@/pages/Epmloyees/Epmloyees';
 import Plan from '@/pages/Plan/Plan';
 import Courses from '@/pages/Course/Courses';
+import {ProtectedRoute} from '@/layout/protected-route';
 
 const router = createBrowserRouter([
   {
@@ -32,9 +33,9 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: (
-      // <ProtectedRoute>
-      <DashboardLayout />
-      // </ProtectedRoute>
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
     ),
     children: [
       {

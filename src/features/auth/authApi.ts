@@ -18,16 +18,15 @@ export const authApi = createApi({
       async onQueryStarted(_, {dispatch, queryFulfilled}) {
         try {
           const {data} = await queryFulfilled;
+          console.log('Login success: auth slice', data);
 
           // Store auth data in Redux
           dispatch(
             setCredentials({
-              // user: data.user,
-              token: data.data.accessToken,
+              user: data.data.user,
+              token: data.data.token,
             })
           );
-
-          console.log('Login success:', data);
         } catch (error) {
           // Handle login error if needed
           console.error('Login failed:', error);
@@ -57,7 +56,7 @@ export const authApi = createApi({
 
           dispatch(
             setCredentials({
-              // user: data.user,
+              user: data.user,
               token: data.token,
             })
           );
@@ -102,7 +101,7 @@ export const authApi = createApi({
 
           dispatch(
             setCredentials({
-              // user: data.user,
+              user: data.user,
               token: data.token,
             })
           );

@@ -1,10 +1,11 @@
 // src/app/store.ts
 import {configureStore} from '@reduxjs/toolkit';
-// import authReducer from '@/features/auth/authSlice';
+import authReducer from '@/features/auth/authSlice';
 import {userApi} from '@/features/users/userApi';
 import {clientApi} from '@/features/client/clientApi';
 import {plansApi} from './../features/plans/plansApi';
 import {employeesApi} from '@/features/employees/employeesApi';
+import {authApi} from '@/features/auth/authApi';
 
 import {coursesApi} from '@/features/courses/coursesApi';
 import {modulesApi} from '@/features/modules/modulesApi';
@@ -24,20 +25,20 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-// import storage from 'redux-persist/lib/storage';
-// import {persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import {persistReducer, persistStore} from 'redux-persist';
 
-// const persistConfig = {
-//   key: 'auth',
-//   storage,
-// };
+const persistConfig = {
+  key: 'auth',
+  storage,
+};
 
-// const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
-    // auth: persistedAuthReducer,
-    // [authApi.reducerPath]: authApi.reducer,
+    auth: persistedAuthReducer,
+    [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [clientApi.reducerPath]: clientApi.reducer,
     [plansApi.reducerPath]: plansApi.reducer,
@@ -57,7 +58,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat([
-      // authApi.middleware,
+      authApi.middleware,
       userApi.middleware,
       clientApi.middleware,
       plansApi.middleware,
@@ -75,4 +76,4 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
