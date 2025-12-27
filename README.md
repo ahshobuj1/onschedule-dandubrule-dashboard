@@ -1,3 +1,3 @@
 ## Admin_Dashboard
 
-- [Project Live Demo](https://admin-dashboard-cndymnn-music.vercel.app/)
+- [Project Live Demo](https://onschedule-admin-dashboard.vercel.app/)

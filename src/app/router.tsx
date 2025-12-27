@@ -1,6 +1,5 @@
 // src/app/router.tsx
 import {createBrowserRouter} from 'react-router';
-import {ProtectedRoute} from '@/layout/protected-route';
 import Dashboard from '@/pages/Dashboard/Dashboard';
 import DashboardLayout from '@/layout/dashboard-layout';
 import Users from '@/pages/Users/Users';
@@ -10,7 +9,6 @@ import LoginPage from '@/pages/Login/LoginPage';
 // import Transactions from '@/pages/Transactions/Transactions'; // ✨ Import
 // import Supplier from '@/pages/Supplier/Supplier';
 // import Assignment from '@/pages/Assignment/Assignment';
-// import Categories from '@/pages/Categories/Categories';
 // import Questions from '@/pages/Questions/Questions';
 import Clients from '@/pages/Clients/Clients';
 import Epmloyees from '@/pages/Epmloyees/Epmloyees';
@@ -33,9 +31,9 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: (
-      <ProtectedRoute>
-        <DashboardLayout />
-      </ProtectedRoute>
+      // <ProtectedRoute>
+      <DashboardLayout />
+      // </ProtectedRoute>
     ),
     children: [
       {

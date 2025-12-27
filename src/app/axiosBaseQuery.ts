@@ -5,8 +5,8 @@ import axios, {
   AxiosError,
 } from 'axios';
 import {type BaseQueryFn} from '@reduxjs/toolkit/query/react';
-import {store} from './store';
-import {logout} from '@/features/auth/authSlice';
+// import {store} from './store';
+// import {logout} from '@/features/auth/authSlice';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -64,7 +64,7 @@ export const axiosBaseQuery =
         errorName === 'TokenExpiredError';
 
       if (isTokenExpired) {
-        store.dispatch(logout());
+        // store.dispatch(logout());
       }
       return {
         error: {

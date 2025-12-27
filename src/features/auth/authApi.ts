@@ -75,18 +75,18 @@ export const authApi = createApi({
         url: '/auth/logout',
         method: 'POST',
       }),
-      async onQueryStarted(_, {dispatch, queryFulfilled}) {
-        try {
-          await queryFulfilled;
-        } catch (error) {
-          // Even if server logout fails, clear local state
-          console.error('Server logout failed:', error);
-        } finally {
-          // Always clear local auth state
-          dispatch(logout());
-          localStorage.removeItem('refreshToken');
-        }
-      },
+      // async onQueryStarted(_, {dispatch, queryFulfilled}) {
+      //   try {
+      //     await queryFulfilled;
+      //   } catch (error) {
+      //     // Even if server logout fails, clear local state
+      //     console.error('Server logout failed:', error);
+      //   } finally {
+      //     // Always clear local auth state
+      //     dispatch(logout());
+      //     localStorage.removeItem('refreshToken');
+      //   }
+      // },
       invalidatesTags: ['Auth', 'User', 'Profile'],
     }),
 

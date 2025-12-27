@@ -11,9 +11,9 @@ export const FromLogin = () => {
     register,
     handleSubmit,
     errors,
-    isLoading,
-    isSuccess,
-    isError,
+    // isLoading,
+    // isSuccess,
+    // isError,
     showPassword,
     togglePasswordVisibility,
     setValue,
@@ -22,7 +22,7 @@ export const FromLogin = () => {
   return (
     <div>
       {/* Success/Error Messages */}
-      {isSuccess && (
+      {/* {isSuccess && (
         <div className="mb-6 p-4 bg-background border  rounded-lg">
           <p className="text-chart-2 text-sm font-medium">
             Login successful! Redirecting...
@@ -36,7 +36,7 @@ export const FromLogin = () => {
             Login failed. Please check your credentials and try again.
           </p>
         </div>
-      )}
+      )} */}
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Business Email */}
@@ -108,9 +108,9 @@ export const FromLogin = () => {
         {/* Log In Button */}
         <Button
           type="submit"
-          disabled={isLoading}
+          // disabled={isLoading}
           className="w-full h-14 text-lg font-medium bg-primary hover:bg-primary/80 rounded-xl shadow-lg transition-all disabled:opacity-50 text-white">
-          {isLoading ? 'Logging In...' : 'Log In'}
+          {/* {isLoading ? 'Logging In...' : 'Log In'} */} Log In
         </Button>
 
         <div className="text-center">

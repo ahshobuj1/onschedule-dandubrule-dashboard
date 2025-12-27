@@ -25,7 +25,7 @@ export const useLoginForm = () => {
     mode: 'onChange', // better UX: validate on onChange
     defaultValues: {
       email: 'super@gmail.com',
-      password: 'SabbirMridha12',
+      password: 'superAdmin@123',
       terms: true, // pre-checked
     },
   });
