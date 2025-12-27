@@ -24,8 +24,8 @@ export const useLoginForm = () => {
     resolver: zodResolver(loginFormSchema),
     mode: 'onChange', // better UX: validate on onChange
     defaultValues: {
-      email: 'oli1412001@gmail.com',
-      password: 'Password123password..',
+      email: 'ahshobuj0@gmail.com',
+      password: 'ahshobuj0@A',
       // terms: true, // pre-checked
     },
   });
