@@ -11,6 +11,8 @@ import {
 } from '@/components/ui/select';
 import {ArrowDownNarrowWide, ArrowUpNarrowWide} from 'lucide-react';
 import PlanTable from './PlanTable';
+import CreatePlan from './CreatePlan';
+// import CreatePlan from './CreatePlan';
 
 export default function Plan() {
   const [search, setSearch] = useState('');
@@ -66,6 +68,7 @@ export default function Plan() {
             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           />
           <Button onClick={handleSearch}>Search</Button>
+          <CreatePlan trigger={<Button>+ Create Plan</Button>} />
         </div>
       </header>
 

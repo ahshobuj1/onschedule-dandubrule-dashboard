@@ -13,6 +13,7 @@ import LoginPage from '@/pages/Login/LoginPage';
 import Clients from '@/pages/Clients/Clients';
 import Epmloyees from '@/pages/Epmloyees/Epmloyees';
 import Plan from '@/pages/Plan/Plan';
+import Courses from '@/pages/Course/Courses';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: 'employees',
         element: <Epmloyees />,
+      },
+      {
+        path: 'courses',
+        element: <Courses />,
       },
       // {
       //   path: 'suppliers',

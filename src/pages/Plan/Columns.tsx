@@ -14,6 +14,7 @@ import {
 
 import type {IPlan} from './type';
 import PlanStatusCell from './PlanStatusCell';
+import EditPlan from './EditPlan';
 
 export const columns: ColumnDef<IPlan>[] = [
   //  SL
@@ -185,14 +186,23 @@ export const columns: ColumnDef<IPlan>[] = [
 
           <DropdownMenuContent align="end">
             <DropdownMenuItem>View Plan</DropdownMenuItem>
-            <DropdownMenuItem>Edit Plan</DropdownMenuItem>
+
+            {/* ✅ Edit – SAME LOOK, proper behavior */}
+            <EditPlan
+              item={plan}
+              trigger={
+                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                  Edit Plan
+                </DropdownMenuItem>
+              }
+            />
 
             {plan.status === 'active' ? (
               <DropdownMenuItem className="text-yellow-600">
-                Deactivate
+                Inactivate
               </DropdownMenuItem>
             ) : (
-              <DropdownMenuItem className="text-green-600">
+              <DropdownMenuItem className="text-primary">
                 Activate
               </DropdownMenuItem>
             )}

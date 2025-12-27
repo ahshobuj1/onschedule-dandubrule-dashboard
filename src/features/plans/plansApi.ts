@@ -37,7 +37,7 @@ export const plansApi = createApi({
       query: ({id, data}) => ({
         url: `/plans/${id}`,
         method: 'PATCH',
-        data,
+        data: data,
       }),
       invalidatesTags: ['Plans'],
     }),

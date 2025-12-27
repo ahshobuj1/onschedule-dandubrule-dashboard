@@ -286,7 +286,7 @@ function EditCourse({
                           onCheckedChange={field.onChange}
                         />
                       </FormControl>
-                      <FormLabel className="!mt-0">Is Published</FormLabel>
+                      <FormLabel className="mt-0!">Is Published</FormLabel>
                     </FormItem>
                   )}
                 />

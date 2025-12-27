@@ -19,6 +19,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import {Link} from 'react-router';
+import {CalendarCheck} from 'lucide-react';
 
 const data = {
   user: {
@@ -52,31 +53,6 @@ const data = {
       url: '/dashboard/employees',
       icon: IconListCheck,
     },
-    // {
-    //   title: 'Courses',
-    //   url: '/dashboard/courses',
-    //   icon: IconBuildingStore,
-    // },
-    // {
-    //   title: 'Vendor',
-    //   url: '/dashboard/vendor',
-    //   icon: IconBuildingStore,
-    // },
-    // {
-    //   title: 'Supplier',
-    //   url: '/dashboard/suppliers',
-    //   icon: IconUsers,
-    // },
-    // {
-    //   title: 'Assignment',
-    //   url: '/dashboard/assignments',
-    //   icon: IconClipboardCheck,
-    // },
-    // {
-    //   title: 'Pricing',
-    //   url: '/dashboard/pricing',
-    //   icon: IconTag,
-    // },
   ],
 };
 export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
@@ -89,11 +65,8 @@ export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!">
               <Link to="/dashboard">
-                <img
-                  src="/logo.png"
-                  alt="The Recident Creator"
-                  className="size-6"
-                />
+                <CalendarCheck />
+
                 <span className="text-base font-semibold">
                   On<span className="text-primary">Schedule</span>
                 </span>
