@@ -83,7 +83,7 @@ export const columns: ColumnDef<IPlan>[] = [
       const features = row.original.features as string[];
 
       if (!features?.length) {
-        return <span className="text-muted-foreground">—</span>;
+        return <span className="text-muted-foreground pl-2">none</span>;
       }
 
       return (
@@ -124,7 +124,7 @@ export const columns: ColumnDef<IPlan>[] = [
       ].filter(Boolean) as string[];
 
       if (!highlights.length) {
-        return <span className="text-muted-foreground">—</span>;
+        return <span className="text-muted-foreground pl-2">none</span>;
       }
 
       return (

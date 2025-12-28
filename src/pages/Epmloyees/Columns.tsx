@@ -24,11 +24,7 @@ export const columns: ColumnDef<IEmployee>[] = [
       const pageIndex = table.getState().pagination.pageIndex;
       const pageSize = table.getState().pagination.pageSize;
 
-      return (
-        <span className="font-bold">
-          {pageIndex * pageSize + row.index + 1}
-        </span>
-      );
+      return <span className="">{pageIndex * pageSize + row.index + 1}</span>;
     },
   },
 
@@ -80,7 +76,7 @@ export const columns: ColumnDef<IEmployee>[] = [
           {row.original.additionalNotes}
         </span>
       ) : (
-        <span className="text-muted-foreground">—</span>
+        <span className="text-muted-foreground pl-2">none</span>
       ),
   },
 

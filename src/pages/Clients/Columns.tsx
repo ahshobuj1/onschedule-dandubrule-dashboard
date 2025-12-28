@@ -15,6 +15,18 @@ import {
 import type {IClient} from './type';
 
 export const columns: ColumnDef<IClient>[] = [
+  // serial
+  {
+    id: 'sl',
+    header: '#',
+    cell: ({row, table}) => {
+      const pageIndex = table.getState().pagination.pageIndex;
+      const pageSize = table.getState().pagination.pageSize;
+
+      return <span className="">{pageIndex * pageSize + row.index + 1}</span>;
+    },
+  },
+
   //  Client / Company
   {
     header: 'Client',

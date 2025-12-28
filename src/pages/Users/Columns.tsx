@@ -101,7 +101,7 @@ export const columns: ColumnDef<IUser>[] = [
     header: 'Designation',
     cell: ({row}) =>
       row.original.designation ?? (
-        <span className="text-muted-foreground">—</span>
+        <span className="text-muted-foreground">none</span>
       ),
   },
 
