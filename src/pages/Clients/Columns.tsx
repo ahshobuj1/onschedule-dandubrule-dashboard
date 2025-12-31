@@ -1,7 +1,7 @@
 import type {ColumnDef} from '@tanstack/react-table';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
-import {MoreHorizontal} from 'lucide-react';
+import {ActivitySquare, Key, MoreHorizontal, Trash} from 'lucide-react';
 import {formatDate} from '@/utils/formatDate';
 
 import {
@@ -99,28 +99,30 @@ export const columns: ColumnDef<IClient>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
+            <Button variant="ghost" className="h-8 w-8 p-0 ">
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>View Details</DropdownMenuItem>
+          <DropdownMenuContent align="end" className="py-3">
+            {/* <DropdownMenuItem className="cursor-pointer">
+              <ViewIcon /> View Details
+            </DropdownMenuItem> */}
 
             {client.status === 'active' ? (
-              <DropdownMenuItem className="text-yellow-600">
-                Deactivate
+              <DropdownMenuItem className="text-yellow-600 cursor-pointer">
+                <Key /> Deactivate
               </DropdownMenuItem>
             ) : (
-              <DropdownMenuItem className="text-green-600">
-                Activate
+              <DropdownMenuItem className="text-green-600 cursor-pointer">
+                <ActivitySquare /> Activate
               </DropdownMenuItem>
             )}
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem className="text-destructive">
-              Delete Client
+            <DropdownMenuItem className="text-destructive cursor-pointer">
+              <Trash /> Delete Client
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

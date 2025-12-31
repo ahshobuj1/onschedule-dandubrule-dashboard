@@ -1,7 +1,13 @@
 import type {ColumnDef} from '@tanstack/react-table';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
-import {ChevronsDown, ChevronsRight, MoreHorizontal} from 'lucide-react';
+import {
+  ChevronsDown,
+  ChevronsRight,
+  Edit,
+  MoreHorizontal,
+  Trash,
+} from 'lucide-react';
 import {formatDate} from '@/utils/formatDate';
 
 import {
@@ -184,33 +190,35 @@ export const columns: ColumnDef<IPlan>[] = [
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>View Plan</DropdownMenuItem>
+          <DropdownMenuContent align="end" className="py-3">
+            {/* <DropdownMenuItem>View Plan</DropdownMenuItem> */}
 
             {/* ✅ Edit – SAME LOOK, proper behavior */}
             <EditPlan
               item={plan}
               trigger={
-                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                  Edit Plan
+                <DropdownMenuItem
+                  onSelect={(e) => e.preventDefault()}
+                  className="cursor-pointer">
+                  <Edit /> Edit Plan
                 </DropdownMenuItem>
               }
             />
 
-            {plan.status === 'active' ? (
-              <DropdownMenuItem className="text-yellow-600">
-                Inactivate
+            {/* {plan.status === 'active' ? (
+              <DropdownMenuItem className="text-yellow-600 cursor-pointer">
+                <Key /> Inactivate
               </DropdownMenuItem>
             ) : (
-              <DropdownMenuItem className="text-primary">
+              <DropdownMenuItem className="text-primary cursor-pointer">
                 Activate
               </DropdownMenuItem>
-            )}
+            )} */}
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem className="text-destructive">
-              Delete Plan
+            <DropdownMenuItem className="text-destructive cursor-pointer">
+              <Trash /> Delete Plan
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

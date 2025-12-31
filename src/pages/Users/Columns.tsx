@@ -1,7 +1,7 @@
 import type {ColumnDef} from '@tanstack/react-table';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
-import {MoreHorizontal} from 'lucide-react';
+import {ActivitySquare, Key, MoreHorizontal, Trash} from 'lucide-react';
 import {formatDate} from '@/utils/formatDate';
 
 import {
@@ -127,23 +127,23 @@ export const columns: ColumnDef<IUser>[] = [
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>View Profile</DropdownMenuItem>
+          <DropdownMenuContent align="end" className="py-3">
+            {/* <DropdownMenuItem>View Profile</DropdownMenuItem> */}
 
             {user.status === 'active' ? (
-              <DropdownMenuItem className="text-yellow-600">
-                Deactivate
+              <DropdownMenuItem className="text-yellow-600 cursor-pointer">
+                <Key /> Deactivate
               </DropdownMenuItem>
             ) : (
-              <DropdownMenuItem className="text-green-600">
-                Activate
+              <DropdownMenuItem className="text-green-600 cursor-pointer">
+                <ActivitySquare /> Activate
               </DropdownMenuItem>
             )}
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem className="text-destructive">
-              Delete User
+            <DropdownMenuItem className="text-destructive cursor-pointer">
+              <Trash /> Delete User
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

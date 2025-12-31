@@ -1,7 +1,7 @@
 import type {ColumnDef} from '@tanstack/react-table';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
-import {MoreHorizontal} from 'lucide-react';
+import {Edit, MoreHorizontal, Trash} from 'lucide-react';
 import {formatDate} from '@/utils/formatDate';
 
 import {
@@ -103,14 +103,18 @@ export const columns: ColumnDef<IEmployee>[] = [
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>View Profile</DropdownMenuItem>
-            <DropdownMenuItem>Edit Employee</DropdownMenuItem>
+          <DropdownMenuContent align="end" className="py-2">
+            {/* <DropdownMenuItem className="cursor-pointer">
+              <View /> View Profile
+            </DropdownMenuItem> */}
+            <DropdownMenuItem className="cursor-pointer">
+              <Edit /> Edit Employee
+            </DropdownMenuItem>
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem className="text-destructive">
-              Delete Employee
+            <DropdownMenuItem className="text-destructive cursor-pointer">
+              <Trash /> Delete Employee
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
