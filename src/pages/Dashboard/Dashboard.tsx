@@ -1,18 +1,35 @@
-import {ChartAreaInteractive} from '@/components/chart-area-interactive';
+// Update your Dashboard component
 import {SectionCards} from '@/components/section-cards';
+import {useStatsQuery} from '@/features/stats/statsApi';
+import {LoaderIcon} from 'lucide-react';
+import FullDashboardCharts2 from './charts/FullDashboardChart2';
 
 export default function Dashboard() {
-  // Fetch profile data
+  const {data: dashboard, isLoading} = useStatsQuery({});
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center">
+        <span className="flex items-center gap-2 text-lg">
+          <LoaderIcon className="animate-spin" /> Loading dashboard...
+        </span>
+      </div>
+    );
+  }
 
   return (
-    <div className="p-6">
-      <div className="@container/main flex flex-1 flex-col gap-2">
-        <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-          <SectionCards />
-          <div className="px-4 lg:px-6">
-            <ChartAreaInteractive />
+    <div className="p-4 md:p-6">
+      <div className="space-y-6">
+        {/* Stats Cards */}
+        <SectionCards dashboardStats={dashboard?.data?.totals} />
+
+        {/* Charts Section */}
+        {dashboard?.data && (
+          <div className="space-y-6">
+            {/* Full Dashboard Charts */}
+            <FullDashboardCharts2 dashboard={dashboard.data} />
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

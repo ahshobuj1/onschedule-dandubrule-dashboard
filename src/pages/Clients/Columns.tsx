@@ -59,8 +59,8 @@ export const columns: ColumnDef<IClient>[] = [
 
   //  Cranes
   {
-    accessorKey: 'cranes',
-    header: 'Cranes',
+    accessorKey: 'assets',
+    header: 'Assets',
     cell: ({row}) => <Badge variant="outline">{row.original.cranes}</Badge>,
   },
 

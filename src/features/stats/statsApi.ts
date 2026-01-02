@@ -9,7 +9,7 @@ export const statsApi = createApi({
   endpoints: (builder) => ({
     stats: builder.query({
       query: () => ({
-        url: '/admin/dashboard/stats',
+        url: '/dashboard/stats',
         method: 'GET',
       }),
       providesTags: ['Stats'],
