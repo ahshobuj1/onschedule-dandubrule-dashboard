@@ -1,9 +1,9 @@
-import {AppSidebar} from '@/components/app-sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
 
-import {SiteHeader} from '@/components/site-header';
-import {SidebarInset, SidebarProvider} from '@/components/ui/sidebar';
+import { SiteHeader } from '@/components/site-header';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
-import {Outlet} from 'react-router';
+import { Outlet } from 'react-router';
 
 export default function Page() {
   return (

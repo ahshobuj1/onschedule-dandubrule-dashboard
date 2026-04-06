@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 export const TransactionStatus = {
     PENDING: 'pending',
     PROCESSING: 'processing',
@@ -7,59 +5,29 @@ export const TransactionStatus = {
     FAILED: 'failed',
     CANCELLED: 'cancelled',
     REFUNDED: 'refunded',
-    PARTIALLY: 'partially',
 } as const;
 
 export const PaymentGateway = {
-    TAP_PAYMENT: 'tap_payment',
     STRIPE: 'stripe',
+    PAYPAL: 'paypal',
 } as const;
 
 export type TTransaction = {
     id: string;
-    userId: string;
-    courseId?: string | null;
-    planId?: string | null;
-    gateway: string;
-    status: string;
-    amount: number;
+    membershipId: string;
+    amount: string | number;
     currency: string;
-    externalRef?: string | null;
-    description?: string | null;
+    paymentGateway: string;
+    paymentStatus: string;
+    transactionType: string;
+    externalId: string | null;
+    description: string | null;
+    metadata?: {
+        invoiceId?: string;
+        [key: string]: any;
+    };
+    processedAt: string | null;
+    refundedAt: string | null;
     createdAt: string;
     updatedAt: string;
-    // Relations - Assuming these might be populated
-    user?: {
-        id: string;
-        displayName: string;
-        email: string;
-        avatarUrl?: string;
-    };
-    course?: {
-        id: string;
-        title: string;
-    };
-    plan?: {
-        id: string;
-        title: string;
-    };
 };
-
-// Schema for editing
-export const TransactionEditSchema = z.object({
-    status: z.enum([
-        'pending',
-        'processing',
-        'completed',
-        'failed',
-        'cancelled',
-        'refunded',
-        'partially',
-    ]),
-    amount: z.coerce.number().min(0).optional(),
-    currency: z.string().length(3).optional(),
-    externalRef: z.string().optional(),
-    description: z.string().optional(),
-});
-
-export type TTransactionEditSchema = z.infer<typeof TransactionEditSchema>;

@@ -28,8 +28,8 @@ export function TransactionsTable({
             search: searchQuery,
             sortBy: sortQuery,
             sortOrder,
-            status: statusFilter === 'all' ? undefined : statusFilter,
-            gateway: gatewayFilter === 'all' ? undefined : gatewayFilter,
+            paymentStatus: statusFilter === 'all' ? undefined : statusFilter,
+            paymentGateway: gatewayFilter === 'all' ? undefined : gatewayFilter,
         },
         {
             refetchOnMountOrArgChange: true,
@@ -37,7 +37,7 @@ export function TransactionsTable({
     );
 
     const totalRows = data?.meta?.pagination?.total ?? 0;
-    const totalPages = data?.meta?.pagination?.totalPages ?? 1;
+    const totalPages = Math.ceil(totalRows / pagination.pageSize);
 
     return (
         <DataTable

@@ -8,7 +8,7 @@ export const transactionsApi = createApi({
     endpoints: builder => ({
         getTransactions: builder.query({
             query: params => ({
-                url: '/transactions',
+                url: '/billing/history',
                 method: 'GET',
                 params: { ...params },
             }),
@@ -16,25 +16,10 @@ export const transactionsApi = createApi({
         }),
         getTransaction: builder.query({
             query: id => ({
-                url: `/transactions/${id}`,
+                url: `/billing/history/${id}`,
                 method: 'GET',
             }),
             providesTags: ['Transactions'],
-        }),
-        updateTransaction: builder.mutation({
-            query: ({ id, data }) => ({
-                url: `/transactions/${id}`,
-                method: 'PATCH',
-                data,
-            }),
-            invalidatesTags: ['Transactions'],
-        }),
-        deleteTransaction: builder.mutation({
-            query: id => ({
-                url: `/transactions/${id}`,
-                method: 'DELETE',
-            }),
-            invalidatesTags: ['Transactions'],
         }),
     }),
 });
@@ -42,6 +27,4 @@ export const transactionsApi = createApi({
 export const {
     useGetTransactionsQuery,
     useGetTransactionQuery,
-    useUpdateTransactionMutation,
-    useDeleteTransactionMutation,
 } = transactionsApi;

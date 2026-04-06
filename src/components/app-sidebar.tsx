@@ -4,7 +4,8 @@ import {
   IconUsers,
   IconReceipt2,
   IconMessageUser,
-  IconListCheck, // ✨ Import Icon
+  IconListCheck,
+  IconPalette,
 } from '@tabler/icons-react';
 
 import {NavMain} from '@/components/nav-main';
@@ -52,6 +53,16 @@ const data = {
       title: 'Employees',
       url: '/dashboard/employees',
       icon: IconListCheck,
+    },
+    {
+      title: 'Transactions',
+      url: '/dashboard/transactions',
+      icon: IconReceipt2,
+    },
+    {
+      title: 'Landing Page',
+      url: '/dashboard/landing-page',
+      icon: IconPalette,
     },
   ],
 };

@@ -23,7 +23,7 @@ export default function Transactions() {
     const sortOptions = [
         { value: 'createdAt', label: 'Date Created' },
         { value: 'amount', label: 'Amount' },
-        { value: 'status', label: 'Status' },
+        { value: 'paymentStatus', label: 'Status' },
         { value: 'updatedAt', label: 'Last Updated' },
     ];
 

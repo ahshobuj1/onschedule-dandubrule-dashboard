@@ -13,7 +13,8 @@ import {transactionsApi} from '@/features/transactions/transactionsApi';
 import {certificateApi} from '@/features/certificate/certificateApi';
 import {contentApi} from '@/features/content/contentApi';
 import {statsApi} from '@/features/stats/statsApi';
-import {assignmentApi} from '@/features/assignment/assignmentApi'; // ✨ Import
+import {assignmentApi} from '@/features/assignment/assignmentApi';
+import {landingPageApi} from '@/features/landing-page/landingPageApi'; // ✨ Import
 
 import {
   // persistStore,
@@ -50,7 +51,8 @@ export const store = configureStore({
     [transactionsApi.reducerPath]: transactionsApi.reducer,
     [statsApi.reducerPath]: statsApi.reducer,
     [assignmentApi.reducerPath]: assignmentApi.reducer,
-    [certificateApi.reducerPath]: certificateApi.reducer, // ✨ Add reducer
+    [certificateApi.reducerPath]: certificateApi.reducer,
+    [landingPageApi.reducerPath]: landingPageApi.reducer, // ✨ Add reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -70,7 +72,8 @@ export const store = configureStore({
       transactionsApi.middleware,
       certificateApi.middleware,
       assignmentApi.middleware,
-      statsApi.middleware, // ✨ Add middleware
+      statsApi.middleware,
+      landingPageApi.middleware, // ✨ Add middleware
     ]),
 });
 

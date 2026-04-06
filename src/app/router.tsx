@@ -14,6 +14,8 @@ import Clients from '@/pages/Clients/Clients';
 import Epmloyees from '@/pages/Epmloyees/Epmloyees';
 import Plan from '@/pages/Plan/Plan';
 import Courses from '@/pages/Course/Courses';
+import Transactions from '@/pages/Transactions/Transactions';
+import LandingPageCMS from '@/pages/LandingPage/LandingPageCMS'; // ✨ Import
 import {ProtectedRoute} from '@/layout/protected-route';
 
 const router = createBrowserRouter([
@@ -87,10 +89,14 @@ const router = createBrowserRouter([
       //   path: 'vendor',
       //   element: <Users />,
       // },
-      // {
-      //   path: 'transactions',
-      //   element: <Transactions />,
-      // },
+      {
+        path: 'transactions',
+        element: <Transactions />,
+      },
+      {
+        path: 'landing-page',
+        element: <LandingPageCMS />,
+      },
       {
         path: '*',
         element: <h1>404</h1>,
