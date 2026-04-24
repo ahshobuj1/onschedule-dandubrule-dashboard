@@ -18,6 +18,7 @@ interface AuthState {
   role: string | null;
   userId: string | null;
   user: TUser | null;
+  permissions: string[];
 }
 
 const initialState: AuthState = {
@@ -27,6 +28,7 @@ const initialState: AuthState = {
   role: null,
   userId: null,
   user: null,
+  permissions: [],
 };
 
 const authSlice = createSlice({
@@ -35,7 +37,7 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      action: PayloadAction<{token: string; user: TUser}>
+      action: PayloadAction<{token: string; user: TUser & {permissions?: string[]}}>
     ) => {
       console.log('action payload', action.payload);
 
@@ -43,6 +45,7 @@ const authSlice = createSlice({
       state.token = token;
       state.isAuthenticated = true;
       state.user = user;
+      state.permissions = user.permissions || [];
 
       try {
         const decoded = jwtDecode<JwtPayload>(token);
@@ -62,6 +65,7 @@ const authSlice = createSlice({
       state.role = null;
       state.userId = null;
       state.user = null;
+      state.permissions = [];
       localStorage.removeItem('token');
     },
 

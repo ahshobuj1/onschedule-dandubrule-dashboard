@@ -15,6 +15,7 @@ import {contentApi} from '@/features/content/contentApi';
 import {statsApi} from '@/features/stats/statsApi';
 import {assignmentApi} from '@/features/assignment/assignmentApi';
 import {landingPageApi} from '@/features/landing-page/landingPageApi'; // ✨ Import
+import {permissionApi} from '@/features/permissions/permissionApi';
 
 import {
   // persistStore,
@@ -53,6 +54,7 @@ export const store = configureStore({
     [assignmentApi.reducerPath]: assignmentApi.reducer,
     [certificateApi.reducerPath]: certificateApi.reducer,
     [landingPageApi.reducerPath]: landingPageApi.reducer, // ✨ Add reducer
+    [permissionApi.reducerPath]: permissionApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -74,6 +76,7 @@ export const store = configureStore({
       assignmentApi.middleware,
       statsApi.middleware,
       landingPageApi.middleware, // ✨ Add middleware
+      permissionApi.middleware,
     ]),
 });
 

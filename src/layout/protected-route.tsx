@@ -20,8 +20,9 @@ export const ProtectedRoute = ({children}: ProtectedRouteProps) => {
     return <Navigate to="/login" state={{from: location}} replace />;
   }
 
-  // Role check — only ADMIN allowed
-  if (role !== import.meta.env.VITE_AUTHORIZED_ROLE) {
+  // Role check — allow admin, subscriber, and employee
+  const allowedRoles = ['admin', 'subscriber', 'employee'];
+  if (!role || !allowedRoles.includes(role)) {
     toast.warning('You are not authorized!');
     return <Navigate to="/login" replace />;
   }

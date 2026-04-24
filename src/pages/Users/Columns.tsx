@@ -1,8 +1,10 @@
 import type {ColumnDef} from '@tanstack/react-table';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
-import {ActivitySquare, Key, MoreHorizontal, Trash} from 'lucide-react';
+import {ActivitySquare, Key, MoreHorizontal, ShieldCheck, Trash} from 'lucide-react';
 import {formatDate} from '@/utils/formatDate';
+import {UserPermissionDialog} from '@/features/permissions/components/UserPermissionDialog';
+import {useState} from 'react';
 
 import {
   DropdownMenu,
@@ -118,35 +120,53 @@ export const columns: ColumnDef<IUser>[] = [
     header: 'Actions',
     cell: ({row}) => {
       const user = row.original;
+      const [isPermissionDialogOpen, setIsPermissionDialogOpen] = useState(false);
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
+        <>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end" className="py-3">
-            {/* <DropdownMenuItem>View Profile</DropdownMenuItem> */}
-
-            {user.status === 'active' ? (
-              <DropdownMenuItem className="text-yellow-600 cursor-pointer">
-                <Key /> Deactivate
+            <DropdownMenuContent align="end" className="py-3">
+              <DropdownMenuItem 
+                className="cursor-pointer"
+                onClick={() => setIsPermissionDialogOpen(true)}
+              >
+                <ShieldCheck className="mr-2 h-4 w-4" /> Manage Permissions
               </DropdownMenuItem>
-            ) : (
-              <DropdownMenuItem className="text-green-600 cursor-pointer">
-                <ActivitySquare /> Activate
+
+              <DropdownMenuSeparator />
+
+              {/* <DropdownMenuItem>View Profile</DropdownMenuItem> */}
+
+              {user.status === 'active' ? (
+                <DropdownMenuItem className="text-yellow-600 cursor-pointer">
+                  <Key className="mr-2 h-4 w-4" /> Deactivate
+                </DropdownMenuItem>
+              ) : (
+                <DropdownMenuItem className="text-green-600 cursor-pointer">
+                  <ActivitySquare className="mr-2 h-4 w-4" /> Activate
+                </DropdownMenuItem>
+              )}
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem className="text-destructive cursor-pointer">
+                <Trash className="mr-2 h-4 w-4" /> Delete User
               </DropdownMenuItem>
-            )}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-            <DropdownMenuSeparator />
-
-            <DropdownMenuItem className="text-destructive cursor-pointer">
-              <Trash /> Delete User
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          <UserPermissionDialog 
+            open={isPermissionDialogOpen} 
+            onOpenChange={setIsPermissionDialogOpen} 
+            user={user} 
+          />
+        </>
       );
     },
   },

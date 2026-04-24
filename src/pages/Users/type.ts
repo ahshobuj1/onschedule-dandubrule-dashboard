@@ -2,8 +2,8 @@ import {z} from 'zod';
 
 // Role and status enums
 const roleSchema = z.enum(
-  ['user', 'admin'],
-  'Role must be one of: user, admin'
+  ['subscriber', 'admin', 'employee'],
+  'Role must be one of: subscriber, admin, employee'
 );
 const statusSchema = z.enum(
   ['active', 'inactive', 'suspended', 'pending_verification'],
@@ -69,6 +69,7 @@ export interface IUser {
   emailVerifiedAt: string | null;
   terms: boolean | null;
   avatarUrl: string | null;
+  customRoleId?: string | null;
   createdAt: string;
   updatedAt: string;
 }

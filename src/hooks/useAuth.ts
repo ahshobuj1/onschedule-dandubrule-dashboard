@@ -4,11 +4,11 @@ import {useSelector} from 'react-redux';
 import {type RootState} from '@/app/store';
 
 export const useAuth = () => {
-  const {token, isAuthenticated, isLoading, role} = useSelector(
+  const {token, isAuthenticated, isLoading, role, permissions} = useSelector(
     (state: RootState) => state.auth
   );
 
-  return {token, isAuthenticated, isLoading, role};
+  return {token, isAuthenticated, isLoading, role, permissions};
 };
 
 // src/hooks/useLocalStorage.ts

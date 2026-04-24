@@ -16,6 +16,7 @@ import Plan from '@/pages/Plan/Plan';
 import Courses from '@/pages/Course/Courses';
 import Transactions from '@/pages/Transactions/Transactions';
 import LandingPageCMS from '@/pages/LandingPage/LandingPageCMS'; // ✨ Import
+import PermissionsPage from '@/pages/Permissions/PermissionsPage';
 import {ProtectedRoute} from '@/layout/protected-route';
 
 const router = createBrowserRouter([
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: 'landing-page',
         element: <LandingPageCMS />,
+      },
+      {
+        path: 'permissions',
+        element: <PermissionsPage />,
       },
       {
         path: '*',
